@@ -19,7 +19,7 @@ RUN set -x && \
 	ln -s /var/lib/solr/data $SOLR_COLLECTION_PATH/data
 
 # Copy configs
-COPY ./solr/conf /var/lib/solr/conf
+COPY ./conf /var/lib/solr/conf
 
 # Persistent volume for solr data
 VOLUME ["/var/lib/solr/data"]
