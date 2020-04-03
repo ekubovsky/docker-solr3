@@ -3,7 +3,7 @@ FROM java:openjdk-7-jre
 MAINTAINER Eugene Kubovsky
 
 # Solr version
-ENV SOLR_VERSION 3.6.2
+ENV SOLR_VERSION 3.5.0
 ENV SOLR_MIRROR http://archive.apache.org/dist/lucene/solr
 ENV SOLR apache-solr-$SOLR_VERSION
 ENV SOLR_COLLECTION_PATH /opt/$SOLR/example/solr
