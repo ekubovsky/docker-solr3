@@ -7,6 +7,7 @@ ENV SOLR_VERSION 3.5.0
 ENV SOLR_MIRROR http://archive.apache.org/dist/lucene/solr
 ENV SOLR apache-solr-$SOLR_VERSION
 ENV SOLR_COLLECTION_PATH /opt/$SOLR/example/solr
+ENV CONF ./conf
 
 # Download and unpack solr, symlink configuration and data directories
 RUN set -x && \
@@ -19,7 +20,7 @@ RUN set -x && \
 	ln -s /var/lib/solr/data $SOLR_COLLECTION_PATH/data
 
 # Copy configs
-COPY ./conf /var/lib/solr/conf
+COPY $CONF /var/lib/solr/conf
 
 # Persistent volume for solr data
 VOLUME ["/var/lib/solr/data"]

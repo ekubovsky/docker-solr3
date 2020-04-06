@@ -28,3 +28,16 @@ Several config options are available for this image in the ```src``` folder:
 
 Copy desired configuration into ```conf``` folder before buildin an image.
 
+## Persistent Local Volumes
+
+If you wish to create named local volumes that persist in the location(s) you want - install [local-persist Docker plugin](https://github.com/Matchbooklab/local-persist). 
+
+Then to use, you can create a volume with this plugin. The example below mounts a volume on local ```conf``` folder wiht Solr configuration:
+
+```docker volume create -d local-persist -o mountpoint=$PWD/conf --name=solr-conf```
+
+Then if you create a container, you can connect it to this Volume:
+
+```docker run -d -v solr-conf:/var/lib/solr/conf Solr3```
+
+
