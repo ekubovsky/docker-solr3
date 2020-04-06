@@ -30,14 +30,15 @@ Copy desired configuration into ```conf``` folder before buildin an image.
 
 ## Persistent Local Volumes
 
-If you wish to create named local volumes that persist in the location(s) you want - install [local-persist Docker plugin](https://github.com/Matchbooklab/local-persist). 
-
-Then to use, you can create a volume with this plugin. The example below mounts a volume on local ```conf``` folder wiht Solr configuration:
+If you wish to create named local volumes that persist in the location(s) you want - install [local-persist Docker plugin](https://github.com/Matchbooklab/local-persist). Now create a volume using the driver provided by this plugin. The example below mounts a volume on local ```conf``` folder (empty by default):
 
 ```docker volume create -d local-persist -o mountpoint=$PWD/conf --name=solr-conf```
 
-Then if you create a container, you can connect it to this Volume:
+Before you run/create a containr, copy your Solr configuration files into mounted folder from above, and then run/create your container using ```-v``` option:
 
 ```docker run -d -v solr-conf:/var/lib/solr/conf Solr3```
+
+As a result you will have a shared configuration folder, available for both the host and the container. Keep in mind, that Solr 3 does not suport restarting the Solr server - in order for your configuration changes to take effect you will have to kill the process and start Solr conrainer again. The index data should be persisten, as per Dockerfile specification.
+
 
 
