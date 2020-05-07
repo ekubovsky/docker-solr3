@@ -12,7 +12,7 @@ Inspired by https://github.com/docksal/service-solr
    - Detached, with exposed port and shared folder ```docker run -d -v <host/path>:</mount/path> -p 8983:8983 --name solr3 <TAG>```
 4. Run a command inside the container: ```docker exec -ti -w /opt/solr/example Solr3 "COMMAND"```
 
-Solr will be availavle on ```http://1287.0.0.1:8983/sorl```
+Solr will be availavle on ```http://127.0.0.1:8983/sorl```
 
 ## Image details
 
